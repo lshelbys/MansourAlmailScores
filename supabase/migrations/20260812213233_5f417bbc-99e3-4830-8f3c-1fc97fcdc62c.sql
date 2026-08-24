@@ -1,0 +1,1 @@
+ALTER TABLE public.matches ADD COLUMN IF NOT EXISTS result_only boolean NOT NULL DEFAULT false;

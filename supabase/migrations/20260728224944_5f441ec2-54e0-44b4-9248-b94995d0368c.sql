@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.recompute_standings(UUID) FROM PUBLIC, anon;

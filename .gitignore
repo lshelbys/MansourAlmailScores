@@ -1,0 +1,13 @@
+node_modules/
+.output/
+.wrangler/
+.tanstack/
+.env
+.env.*
+!.env.example
+*.log
+response*.html
+final-response.html
+build.log
+preview*.err
+preview*.log

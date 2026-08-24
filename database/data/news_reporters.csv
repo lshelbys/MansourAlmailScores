@@ -1,0 +1,3 @@
+id,user_id,handle,platform,access_code,status,subscription_status,created_at,updated_at,phone,email,code_redeemed_at,full_name
+03d46eff-87a2-4cb3-b911-f697caa6c9ec,2bb3401c-4ae9-4a1d-a434-55502f84b3f8,almail,instagram,MAS-ZNVVFA,rejected,inactive,2026-08-02 23:29:33.908894+00,2026-08-03 00:06:28.665628+00,,,,
+820cad4d-2b67-4e40-8fc1-ac0bb06000bc,23c4092b-7eea-4ad6-966b-3022617fa11e,mansouralmail,instagram,MAS-0EYSSO,approved,inactive,2026-08-03 08:35:27.329988+00,2026-08-03 08:36:09.565651+00,,,,

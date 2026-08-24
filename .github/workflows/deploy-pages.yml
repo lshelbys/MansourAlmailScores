@@ -41,7 +41,7 @@ jobs:
           rm -rf pages
           mkdir -p pages
           cp -R .output/public/. pages/
-          node .output/server/index.mjs > /tmp/mansour-pages-server.log 2>&1 &
+          npx --no-install nitro preview --dir . --port 3000 --host 127.0.0.1 > /tmp/mansour-pages-server.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
           for attempt in $(seq 1 60); do
@@ -50,7 +50,7 @@ jobs:
             fi
             sleep 1
           done
-          test -s pages/index.html
+          test -s pages/index.html || { cat /tmp/mansour-pages-server.log; exit 1; }
           cp pages/index.html pages/404.html
           touch pages/.nojekyll
 

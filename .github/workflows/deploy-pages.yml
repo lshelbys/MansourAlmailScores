@@ -47,7 +47,7 @@ jobs:
           trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
           for attempt in $(seq 1 60); do
             PREVIEW_URL=$(grep -Eo 'https?://(127\\.0\\.0\\.1|localhost):[0-9]+' "$SERVER_LOG" | tail -1 || true)
-            if [ -n "$PREVIEW_URL" ] && curl --fail --silent --show-error "$PREVIEW_URL/" > pages/index.html; then
+            if [ -n "$PREVIEW_URL" ] && curl --location --fail --silent --show-error "$PREVIEW_URL/" > pages/index.html; then
               break
             fi
             sleep 1

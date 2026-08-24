@@ -41,16 +41,18 @@ jobs:
           rm -rf pages
           mkdir -p pages
           cp -R .output/public/. pages/
-          npx --no-install nitro preview --dir . --port 3000 --host 127.0.0.1 > /tmp/mansour-pages-server.log 2>&1 &
+          SERVER_LOG=/tmp/mansour-pages-server.log
+          npx --no-install nitro preview --dir . > "$SERVER_LOG" 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
           for attempt in $(seq 1 60); do
-            if curl --fail --silent --show-error http://127.0.0.1:3000/ > pages/index.html; then
+            PREVIEW_URL=$(grep -Eo 'https?://(127\\.0\\.0\\.1|localhost):[0-9]+' "$SERVER_LOG" | tail -1 || true)
+            if [ -n "$PREVIEW_URL" ] && curl --fail --silent --show-error "$PREVIEW_URL/" > pages/index.html; then
               break
             fi
             sleep 1
           done
-          test -s pages/index.html || { cat /tmp/mansour-pages-server.log; exit 1; }
+          test -s pages/index.html || { cat "$SERVER_LOG"; exit 1; }
           cp pages/index.html pages/404.html
           touch pages/.nojekyll
 

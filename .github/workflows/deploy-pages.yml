@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_ACTIONS: true
+      VITE_SUPABASE_URL: https://ontmfbptthwipfzlywwh.supabase.co
+      VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_RI8GjjlVhJLQGNCNtb7Bjw_LVjZHv8g
+      VITE_SUPABASE_PROJECT_ID: ontmfbptthwipfzlywwh
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

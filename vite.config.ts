@@ -7,9 +7,11 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // GitHub Pages serves this project from /MansourAlmailScores/.
-  // Local development keeps the normal root-relative base.
-  base: process.env.GITHUB_ACTIONS ? "/MansourAlmailScores/" : "/",
+  vite: {
+    // GitHub Pages serves this project from /MansourAlmailScores/.
+    // Local development keeps the normal root-relative base.
+    base: process.env.GITHUB_ACTIONS ? "/MansourAlmailScores/" : "/",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
